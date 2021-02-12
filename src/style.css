@@ -1,0 +1,66 @@
+.hidden {
+  display: none !important;
+}
+
+.error {
+  text-align: center;
+  font-size: 35px;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(186, 25, 25, 1) 73%);
+}
+
+.mainForm {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin-bottom: 25px;
+}
+
+.cityInputLabel {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.cityInput {
+  margin-top: 15px;
+  width: 33%;
+  align-self: center;
+  font-size: 20px;
+  text-align: center;
+}
+
+.button {
+  color: white;
+  background: rgb(70, 107, 63);
+  background: linear-gradient(20deg, rgba(70, 107, 63, 1) 0%, rgba(25, 64, 186, 1) 73%);
+  margin-top: 15px;
+  width: 33%;
+  align-self: center;
+  padding: 5px;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.dataConSpan {
+  font-size: 25px;
+  margin-bottom: 25px;
+}
+
+.secondaryData {
+  margin-top: 25px;
+}
+
+.secondarySpan {
+  font-size: 25px;
+  padding-bottom: 25px;
+}
+
+.humidity {
+  margin-top: 25px;
+}
