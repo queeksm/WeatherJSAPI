@@ -11,7 +11,7 @@
 - OpenWeatherMap API
 
 ## Live Demo
-  
+  https://queeksm.github.io/WeatherApp.github.io/
 
 ## Author
 
