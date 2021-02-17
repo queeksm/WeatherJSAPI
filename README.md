@@ -13,6 +13,15 @@
 ## Live Demo
   https://queeksm.github.io/WeatherApp.github.io/
 
+
+## How to get an API key.
+
+- This small project uses the open weather API, you can use the default key on the project or you can create your own key [Here](https://openweathermap.org/api), you can create a free account and then request a Free API key. The activation of the key might take a couple of hours.
+
+
+- You can use the Internal API key, all you need to do is leave the api key input blank and the app will fetch the data using the internal key.
+
+
 ## Author
 
 👤 Andres Felipe Perez Restrepo

@@ -5,6 +5,14 @@ const mainRenderer = (fetchData) => {
   const cityInput = document.createElement('input');
   const cityInputLabel = document.createElement('label');
   const submitButton = document.createElement('button');
+  const topsideContainer = document.createElement('div');
+  const switchLabel = document.createElement('label');
+  const switchInput = document.createElement('input');
+  const switchSpan = document.createElement('span');
+  const switchText = document.createElement('div');
+  const apiKey = document.createElement('div');
+  const apiKeyLabel = document.createElement('input');
+  const apiText = document.createElement('span');
 
   const dataCont = document.createElement('div');
   const dataContSpan = document.createElement('span');
@@ -20,9 +28,25 @@ const mainRenderer = (fetchData) => {
   const wind = document.createElement('div');
   const description = document.createElement('div');
 
+  topsideContainer.setAttribute('class', 'topSide');
+  apiKey.setAttribute('class', 'api');
+  apiKeyLabel.setAttribute('id', 'key');
+  apiKeyLabel.setAttribute('class', 'key');
+  apiKeyLabel.setAttribute('type', 'text');
+  apiText.setAttribute('class', 'apiText');
+  apiText.innerHTML = 'Enter Your API key';
+
+  switchLabel.setAttribute('class', 'toggle');
+  switchInput.setAttribute('id', 'toggleswitch');
+  switchInput.setAttribute('type', 'checkbox');
+  switchSpan.setAttribute('class', 'roundbutton');
+  switchText.setAttribute('class', 'switchText');
+
+  switchText.innerHTML = 'Farenheit??';
+
   error.setAttribute('id', 'error');
   error.setAttribute('class', 'error hidden');
-  error.innerHTML = "I couldn't find that city, try again and check your spelling.";
+  error.innerHTML = "I couldn't find that city, try again and check your spelling or check your API key.";
 
   dataCont.setAttribute('class', 'dataContainer');
   dataCont.setAttribute('id', 'dataContainer');
@@ -90,9 +114,19 @@ const mainRenderer = (fetchData) => {
   dataCont.appendChild(secondary);
   dataCont.appendChild(description);
 
+  topsideContainer.appendChild(switchLabel);
+  topsideContainer.appendChild(switchText);
+  switchLabel.appendChild(switchInput);
+  switchLabel.appendChild(switchSpan);
+
+  topsideContainer.appendChild(apiKey);
+  apiKey.appendChild(apiText);
+  apiKey.appendChild(apiKeyLabel);
+
   mainForm.appendChild(cityInputLabel);
   mainForm.appendChild(cityInput);
   mainForm.appendChild(submitButton);
+  mainCont.appendChild(topsideContainer);
   mainCont.appendChild(mainForm);
   mainCont.appendChild(error);
   mainCont.appendChild(dataCont);
@@ -110,18 +144,33 @@ const dataRenderer = (dataObject) => {
   const pressure = document.getElementById('pressure');
   const wind = document.getElementById('windSpeed');
   const description = document.getElementById('description');
+  const flag = document.getElementById('toggleswitch');
 
-  dataContainer.classList.remove('hidden');
-  error.classList.add('hidden');
-  dataContSpan.innerHTML = `Weather report about ${dataObject.name}:`;
-  currtemp.innerHTML = `Currently the temperature is ${(dataObject.temperature - 273).toFixed(2)} degrees Celsius or ${((dataObject.temperature - 273) * (9 / 5) + 32).toFixed(2)} Farenheit`;
-  mintemp.innerHTML = `Minimum temperature of: ${(dataObject.minTemp - 273).toFixed(2)} / ${((dataObject.minTemp - 273) * (9 / 5) + 32).toFixed(2)}`;
-  maxtemp.innerHTML = `Maximum temperature of: ${(dataObject.maxTemp - 273).toFixed(2)} / ${((dataObject.maxTemp - 273) * (9 / 5) + 32).toFixed(2)}`;
-  secondarySpan.innerHTML = 'Data about the wind and humidity in the zone:';
-  humidity.innerHTML = `${dataObject.humidity}% humidity`;
-  pressure.innerHTML = `${dataObject.pressure} hPa`;
-  wind.innerHTML = `${(dataObject.windSpeed * 3.6).toFixed(2)} Km/h / ${(dataObject.windSpeed * 1.944).toFixed(2)} Knots`;
-  description.innerHTML = dataObject.description;
+  if (flag.checked === true) {
+    dataContainer.classList.remove('hidden');
+    error.classList.add('hidden');
+    dataContSpan.innerHTML = `Weather report about ${dataObject.name}:`;
+    currtemp.innerHTML = `Currently the temperature is ${((dataObject.temperature - 273) * (9 / 5) + 32).toFixed(2)} Farenheit`;
+    mintemp.innerHTML = `Minimum temperature of: ${((dataObject.minTemp - 273) * (9 / 5) + 32).toFixed(2)} Farenheit`;
+    maxtemp.innerHTML = `Maximum temperature of: ${((dataObject.maxTemp - 273) * (9 / 5) + 32).toFixed(2)} Farenheit`;
+    secondarySpan.innerHTML = 'Data about the wind and humidity in the zone:';
+    humidity.innerHTML = `${dataObject.humidity}% humidity`;
+    pressure.innerHTML = `${dataObject.pressure} hPa`;
+    wind.innerHTML = `${(dataObject.windSpeed * 1.944).toFixed(2)} Knots`;
+    description.innerHTML = dataObject.description;
+  } else {
+    dataContainer.classList.remove('hidden');
+    error.classList.add('hidden');
+    dataContSpan.innerHTML = `Weather report about ${dataObject.name}:`;
+    currtemp.innerHTML = `Currently the temperature is ${(dataObject.temperature - 273).toFixed(2)} degrees Celsius`;
+    mintemp.innerHTML = `Minimum temperature of: ${(dataObject.minTemp - 273).toFixed(2)} Celsius`;
+    maxtemp.innerHTML = `Maximum temperature of: ${(dataObject.maxTemp - 273).toFixed(2)} Celsius`;
+    secondarySpan.innerHTML = 'Data about the wind and humidity in the zone:';
+    humidity.innerHTML = `${dataObject.humidity}% humidity`;
+    pressure.innerHTML = `${dataObject.pressure} hPa`;
+    wind.innerHTML = `${(dataObject.windSpeed * 3.6).toFixed(2)} Km/h`;
+    description.innerHTML = dataObject.description;
+  }
 };
 
 const errorRenderer = () => {
