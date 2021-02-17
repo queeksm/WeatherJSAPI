@@ -129,3 +129,15 @@ input:checked + .roundbutton::before {
   flex-direction: column;
   align-self: flex-end;
 }
+
+.cold {
+  background-color: #d6ecef;
+}
+
+.warm {
+  background-color: #ffb865;
+}
+
+.hot {
+  background-color: #fa3a4dad;
+}

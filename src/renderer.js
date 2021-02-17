@@ -42,7 +42,7 @@ const mainRenderer = (fetchData) => {
   switchSpan.setAttribute('class', 'roundbutton');
   switchText.setAttribute('class', 'switchText');
 
-  switchText.innerHTML = 'Farenheit??';
+  switchText.innerHTML = 'Activate this to query data on imperial units';
 
   error.setAttribute('id', 'error');
   error.setAttribute('class', 'error hidden');
@@ -145,6 +145,21 @@ const dataRenderer = (dataObject) => {
   const wind = document.getElementById('windSpeed');
   const description = document.getElementById('description');
   const flag = document.getElementById('toggleswitch');
+  const changeCont = document.getElementById('temperatureContainer');
+
+  if ((dataObject.temperature - 273) <= 0) {
+    changeCont.classList.add('cold');
+    changeCont.classList.remove('warm');
+    changeCont.classList.remove('hot');
+  } else if ((dataObject.temperature - 273) >= 0 && (dataObject.temperature - 273) <= 27) {
+    changeCont.classList.add('warm');
+    changeCont.classList.remove('hot');
+    changeCont.classList.remove('cold');
+  } else {
+    changeCont.classList.add('hot');
+    changeCont.classList.remove('warm');
+    changeCont.classList.remove('cold');
+  }
 
   if (flag.checked === true) {
     dataContainer.classList.remove('hidden');

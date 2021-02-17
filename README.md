@@ -21,6 +21,9 @@
 
 - You can use the Internal API key, all you need to do is leave the api key input blank and the app will fetch the data using the internal key.
 
+## How to use.
+
+- You can clone the repo from the github page and open the index.html file to check locally the project, or you can go to the live version provided above.
 
 ## Author
 
@@ -42,6 +45,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
+- Openweather
 - Hat tip to anyone whose code was used
 - Inspiration
 - etc
